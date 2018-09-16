@@ -50,7 +50,7 @@ namespace ClinicManager
             NameTextBox.Text = selectedPatient.FirstName + " " + selectedPatient.SecondName;
             EmailTextBox.Text = selectedPatient.Email;
             PhoneTextBox.Text = selectedPatient.PhoneNumber;
-            AgeTextBox.Text = ((DateTime.Now - selectedPatient.BirthDate).TotalDays / 365).ToString();
+            AgeTextBox.Text = (((int) (DateTime.Now - selectedPatient.BirthDate).TotalDays / 365)).ToString();
             InsuranceNumberTextBox.Text = selectedPatient.InsuranceNumber;
             Photo.Source = new BitmapImage(new Uri(selectedPatient.Photo, UriKind.Relative));
         }

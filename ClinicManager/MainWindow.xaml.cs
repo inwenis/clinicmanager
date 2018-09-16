@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -29,18 +28,7 @@ namespace ClinicManager
                 DateFormatString = "dd/MM/yyyy"
             });
             var patients = jsonSerializer.Deserialize<List<Patient>>(new JsonTextReader(new StringReader(allText)));
-            for (var i = 0; i < patients.Count; i++)
-            {
-                var patient = patients[i];
-                patient.Photo = GetPhotoForUser(patient);
-            }
-
             return patients.ToArray();
-        }
-
-        private static string GetPhotoForUser(Patient patient)
-        {
-            return patient.InsuranceNumber.Last() % 2 == 0 ? "Photos/male.png" : "Photos/female.png";
         }
 
         private void PatientsListBox_OnSelected(object sender, RoutedEventArgs e)

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace ClinicManager
+namespace ClinicManager.Views
 {
     /// <summary>
     /// Interaction logic for PatientDetailView.xaml

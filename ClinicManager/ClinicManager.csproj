@@ -69,21 +69,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PatientDetailView.xaml">
+    <Page Include="Views\PatientDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PatientUserControl.xaml">
+    <Page Include="UserControls\PatientUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Patient.cs" />
-    <Compile Include="PatientDetailView.xaml.cs">
+    <Compile Include="Views\PatientDetailView.xaml.cs">
       <DependentUpon>PatientDetailView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PatientUserControl.xaml.cs">
+    <Compile Include="UserControls\PatientUserControl.xaml.cs">
       <DependentUpon>PatientUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

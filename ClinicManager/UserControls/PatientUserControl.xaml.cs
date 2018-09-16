@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace ClinicManager
+namespace ClinicManager.UserControls
 {
     /// <summary>
     /// Interaction logic for PatientUserControl.xaml

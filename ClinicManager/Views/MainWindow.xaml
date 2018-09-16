@@ -8,11 +8,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
         <TabControl HorizontalAlignment="Left" Height="378" Margin="10,33,0,0" VerticalAlignment="Top" Width="773">
             <TabItem Header="Patients">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name="PatientsListBox" HorizontalAlignment="Left" Background="DarkOrange" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373" SelectionChanged="PatientsListBox_OnSelected">
+                    <ListBox x:Name="PatientsListBox" ItemsSource="{Binding AllPatients}" HorizontalAlignment="Left" Background="DarkOrange" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373" SelectionChanged="PatientsListBox_OnSelected">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <localUC:PatientUserControl></localUC:PatientUserControl>

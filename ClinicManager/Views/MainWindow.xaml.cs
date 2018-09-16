@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 
-namespace ClinicManager
+namespace ClinicManager.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

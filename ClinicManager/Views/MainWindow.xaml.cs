@@ -26,13 +26,6 @@ namespace ClinicManager.Views
         {
             EditButton.IsEnabled = true;
             EditMenuItem.IsEnabled = true;
-            var selectedPatient = (Patient) ((ListBox) sender).SelectedItem;
-            NameTextBox.Text = selectedPatient.FirstName + " " + selectedPatient.SecondName;
-            EmailTextBox.Text = selectedPatient.Email;
-            PhoneTextBox.Text = selectedPatient.PhoneNumber;
-            AgeTextBox.Text = (((int) (DateTime.Now - selectedPatient.BirthDate).TotalDays / 365)).ToString();
-            InsuranceNumberTextBox.Text = selectedPatient.InsuranceNumber;
-            Photo.Source = new BitmapImage(new Uri(selectedPatient.Photo, UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

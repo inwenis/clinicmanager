@@ -10,11 +10,18 @@ namespace ClinicManager.ViewModels
     public class MainWindowViewModel
     {
         private ObservableCollection<Patient> _allPatients;
+        private Patient _selectedPatient;
 
         public ObservableCollection<Patient> AllPatients
         {
             get => _allPatients;
             set => _allPatients = value;
+        }
+
+        public Patient SelectedPatient
+        {
+            get => _selectedPatient;
+            set => _selectedPatient = value;
         }
 
         public MainWindowViewModel()

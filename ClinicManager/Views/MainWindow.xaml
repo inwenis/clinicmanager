@@ -11,7 +11,7 @@
         <TabControl HorizontalAlignment="Left" Height="378" Margin="10,33,0,0" VerticalAlignment="Top" Width="773">
             <TabItem Header="Patients">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name="PatientsListBox" ItemsSource="{Binding AllPatients}" HorizontalAlignment="Left" Background="DarkOrange" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373" SelectionChanged="PatientsListBox_OnSelected">
+                    <ListBox x:Name="PatientsListBox" ItemsSource="{Binding AllPatients}" SelectedItem="{Binding SelectedPatient}" HorizontalAlignment="Left" Background="DarkOrange" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373" SelectionChanged="PatientsListBox_OnSelected">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <localUC:PatientUserControl></localUC:PatientUserControl>
@@ -23,11 +23,11 @@
                     <TextBlock HorizontalAlignment="Left" Margin="393,67,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="393,95,0,0" TextWrapping="Wrap" Text="Insurance" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="394,123,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="447,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="447,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="446,66,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="446,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310"/>
+                    <TextBox Text="{Binding SelectedPatient.FirstName}" HorizontalAlignment="Left" Height="23" Margin="447,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox Text="{Binding SelectedPatient.Email}" HorizontalAlignment="Left" Height="23" Margin="447,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox Text="{Binding SelectedPatient.PhoneNumber}" HorizontalAlignment="Left" Height="23" Margin="446,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox Text="{Binding SelectedPatient.InsuranceNumber}" HorizontalAlignment="Left" Height="23" Margin="446,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox Text="{Binding SelectedPatient.BirthDate}" HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
                     <Image HorizontalAlignment="Left" Height="189" Margin="570,150,0,0" VerticalAlignment="Top" Width="187"/>
                     <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                 </Grid>

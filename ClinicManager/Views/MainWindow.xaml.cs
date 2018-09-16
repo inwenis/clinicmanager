@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -29,6 +30,11 @@ namespace ClinicManager.Views
                 DateFormatString = "dd/MM/yyyy"
             });
             var patients = jsonSerializer.Deserialize<List<Patient>>(new JsonTextReader(new StringReader(allText)));
+            var applicationDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            foreach (var patient in patients)
+            {
+                patient.Photo = Path.Combine("..", "Photos", patient.Photo);
+            }
             return patients.ToArray();
         }
 

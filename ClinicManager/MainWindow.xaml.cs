@@ -16,8 +16,9 @@ namespace ClinicManager
         public MainWindow()
         {
             InitializeComponent();
-
             PatientsListBox.ItemsSource = LoadFromFile();
+            EditButton.IsEnabled = false;
+            EditMenuItem.IsEnabled = false;
         }
 
         private Patient[] LoadFromFile()
@@ -34,6 +35,7 @@ namespace ClinicManager
         private void PatientsListBox_OnSelected(object sender, RoutedEventArgs e)
         {
             EditButton.IsEnabled = true;
+            EditMenuItem.IsEnabled = true;
             var selectedPatient = (Patient) ((ListBox) sender).SelectedItem;
             NameTextBox.Text = selectedPatient.FirstName + " " + selectedPatient.SecondName;
             EmailTextBox.Text = selectedPatient.Email;

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using ClinicManager.Models;
 
 namespace ClinicManager.Views
 {

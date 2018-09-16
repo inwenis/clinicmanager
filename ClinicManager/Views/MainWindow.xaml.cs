@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using ClinicManager.Models;
 using Newtonsoft.Json;
 
 namespace ClinicManager.Views
@@ -24,7 +25,7 @@ namespace ClinicManager.Views
 
         private Patient[] LoadFromFile()
         {
-            var allText = File.ReadAllText("samplePatients.json");
+            var allText = File.ReadAllText("SampleData/samplePatients.json");
             var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
             {
                 DateFormatString = "dd/MM/yyyy"

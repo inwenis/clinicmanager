@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClinicManager
+namespace ClinicManager.Models
 {
     public class Patient
     {

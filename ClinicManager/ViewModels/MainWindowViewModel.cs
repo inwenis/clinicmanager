@@ -1,21 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Input;
-using ClinicManager.Models;
 using ClinicManager.Services;
 using ClinicManager.Utilities;
-using ClinicManager.Views;
-using Newtonsoft.Json;
 
 namespace ClinicManager.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private readonly DialogService _dialogservice;
+        private readonly PatientDataService _patientDataService;
         private ObservableCollection<PatientViewModel> _allPatients;
         private PatientViewModel _selectedPatient;
 
@@ -43,9 +38,10 @@ namespace ClinicManager.ViewModels
 
         public ICommand Edit { get; set; }
 
-        public MainWindowViewModel(DialogService dialogservice)
+        public MainWindowViewModel(DialogService dialogservice, PatientDataService patientDataService)
         {
             _dialogservice = dialogservice;
+            _patientDataService = patientDataService;
             AllPatients = new ObservableCollection<PatientViewModel>();
             LoadData();
             Edit = new CustomCommand(EditExuecute, CanEditExecute);
@@ -70,7 +66,7 @@ namespace ClinicManager.ViewModels
 
         private void LoadData()
         {
-            var allPatients = LoadFromFile();
+            var allPatients = _patientDataService.GetAllPatients();
             var viewModels = allPatients.Select(x => PatientViewModel.FromModel(x));
             foreach (var patient in viewModels)
             {
@@ -78,20 +74,5 @@ namespace ClinicManager.ViewModels
             }
         }
 
-        private Patient[] LoadFromFile()
-        {
-            var allText = File.ReadAllText("SampleData/samplePatients.json");
-            var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
-            {
-                DateFormatString = "dd/MM/yyyy"
-            });
-            var patients = jsonSerializer.Deserialize<List<Patient>>(new JsonTextReader(new StringReader(allText)));
-            var applicationDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            foreach (var patient in patients)
-            {
-                patient.Photo = Path.Combine("..", "Photos", patient.Photo);
-            }
-            return patients.ToArray();
-        }
     }
 }

@@ -63,21 +63,10 @@ namespace ClinicManager.Utilities
         /// no longer receive any messages.
         /// </summary>
         /// <param name="recipient"></param>
-        public void Unregister(object recipient)
-        {
-            Unregister(recipient, null);
-        }
-
-        /// <summary>
-        /// Unregisters a messenger recipient with a matching context completely. After this method is executed, the recipient will
-        /// no longer receive any messages.
-        /// </summary>
-        /// <param name="recipient"></param>
-        /// <param name="context"></param>
-        public void Unregister(object recipient, object context)
+        public void Unregister<T>(object recipient)
         {
             object action;
-            var key = new MessengerKey(recipient, context);
+            var key = new MessengerKey(recipient, typeof(T));
             Dictionary.TryRemove(key, out action);
         }
 

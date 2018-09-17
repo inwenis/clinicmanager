@@ -32,7 +32,7 @@
                     <Button Command="{Binding Edit}" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Doctors - not yet implemented">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>

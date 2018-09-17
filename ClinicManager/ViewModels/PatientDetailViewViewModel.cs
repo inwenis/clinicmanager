@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using ClinicManager.Utilities;
 
 namespace ClinicManager.ViewModels
 {
@@ -18,6 +19,16 @@ namespace ClinicManager.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(SelectedPatient)));
                 }
             }
+        }
+
+        public PatientDetailViewViewModel()
+        {
+            Messenger.Default.Register<PatientViewModel>(this, SetSelectedPatient);
+        }
+
+        private void SetSelectedPatient(PatientViewModel message)
+        {
+            SelectedPatient = message;
         }
     }
 }

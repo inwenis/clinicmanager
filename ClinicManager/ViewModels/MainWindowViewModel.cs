@@ -33,6 +33,7 @@ namespace ClinicManager.ViewModels
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(SelectedPatient)));
                 }
+                Messenger.Default.Send(SelectedPatient);
             }
         }
 
@@ -54,7 +55,6 @@ namespace ClinicManager.ViewModels
 
         private void EditExuecute(object obj)
         {
-            ViewModelLocator.PatientDetailViewViewModel.SelectedPatient = SelectedPatient;
             PatientDetailView detailView = new PatientDetailView();
             detailView.ShowDialog();
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
 using ClinicManager.Models;
+using ClinicManager.Services;
 using ClinicManager.Utilities;
 using ClinicManager.Views;
 using Newtonsoft.Json;
@@ -14,6 +15,7 @@ namespace ClinicManager.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        private readonly DialogService _dialogservice;
         private ObservableCollection<PatientViewModel> _allPatients;
         private PatientViewModel _selectedPatient;
 
@@ -41,8 +43,9 @@ namespace ClinicManager.ViewModels
 
         public ICommand Edit { get; set; }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(DialogService dialogservice)
         {
+            _dialogservice = dialogservice;
             AllPatients = new ObservableCollection<PatientViewModel>();
             LoadData();
             Edit = new CustomCommand(EditExuecute, CanEditExecute);
@@ -52,6 +55,7 @@ namespace ClinicManager.ViewModels
         private void HandlePatientDeleteMessage(PatientDeleteMessage message)
         {
             AllPatients.Remove(message.ToBeDeleted);
+            _dialogservice.CloseDetailsDialog();
         }
 
         private bool CanEditExecute(object obj)
@@ -61,8 +65,7 @@ namespace ClinicManager.ViewModels
 
         private void EditExuecute(object obj)
         {
-            PatientDetailView detailView = new PatientDetailView();
-            detailView.ShowDialog();
+            _dialogservice.ShowDetailsDialog();
         }
 
         private void LoadData()

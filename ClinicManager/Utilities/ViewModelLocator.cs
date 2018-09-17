@@ -1,4 +1,5 @@
-﻿using ClinicManager.ViewModels;
+﻿using ClinicManager.Services;
+using ClinicManager.ViewModels;
 
 namespace ClinicManager.Utilities
 {
@@ -9,7 +10,9 @@ namespace ClinicManager.Utilities
 
         static ViewModelLocator()
         {
-            MainWindowViewModel = new MainWindowViewModel();
+            var dialogService = new DialogService();
+
+            MainWindowViewModel = new MainWindowViewModel(dialogService);
             PatientDetailViewViewModel = new PatientDetailViewViewModel();
         }
     }

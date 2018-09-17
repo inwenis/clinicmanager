@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows;
+using ClinicManager.Utilities;
 using ClinicManager.ViewModels;
 using Newtonsoft.Json;
 
@@ -13,7 +14,7 @@ namespace ClinicManager.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = ViewModelLocator.MainWindowViewModel;
             EditButton.IsEnabled = false;
             EditMenuItem.IsEnabled = false;
         }
@@ -26,17 +27,17 @@ namespace ClinicManager.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var patientDetailViewViewModel = new PatientDetailViewViewModel();
-            patientDetailViewViewModel.SelectedPatient = ((MainWindowViewModel) DataContext).SelectedPatient;
-            PatientDetailView detailView = new PatientDetailView(patientDetailViewViewModel);
+            ViewModelLocator.PatientDetailViewViewModel.SelectedPatient =
+                ((MainWindowViewModel) DataContext).SelectedPatient;
+            PatientDetailView detailView = new PatientDetailView();
             detailView.ShowDialog();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var patientDetailViewViewModel = new PatientDetailViewViewModel();
-            patientDetailViewViewModel.SelectedPatient = ((MainWindowViewModel) DataContext).SelectedPatient;
-            PatientDetailView detailView = new PatientDetailView(patientDetailViewViewModel);
+            ViewModelLocator.PatientDetailViewViewModel.SelectedPatient =
+                ((MainWindowViewModel) DataContext).SelectedPatient;
+            PatientDetailView detailView = new PatientDetailView();
             detailView.ShowDialog();
         }
 

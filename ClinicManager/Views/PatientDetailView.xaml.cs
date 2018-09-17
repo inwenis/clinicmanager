@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ClinicManager.Utilities;
 using ClinicManager.ViewModels;
 
 namespace ClinicManager.Views
@@ -8,10 +9,10 @@ namespace ClinicManager.Views
     /// </summary>
     public partial class PatientDetailView : Window
     {
-        public PatientDetailView(PatientDetailViewViewModel viewModel)
+        public PatientDetailView()
         {
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = ViewModelLocator.PatientDetailViewViewModel;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

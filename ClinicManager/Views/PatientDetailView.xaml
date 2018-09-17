@@ -26,20 +26,20 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Name="NameLabel" Grid.ColumnSpan="2" FontSize="40" FontWeight="Bold" />
+            <Label Content="{Binding SelectedPatient.Name}" Grid.Row="0" Grid.ColumnSpan="2" FontSize="40" FontWeight="Bold" />
 
-            <Image Name="Image" Grid.Row="1" Grid.ColumnSpan="2" MaxHeight="150" MaxWidth="150"></Image>
+            <Image Source="{Binding SelectedPatient.Photo}" Grid.Row="1" Grid.ColumnSpan="2" MaxHeight="150" MaxWidth="150"></Image>
             <Label Grid.Row="2" Content="Id" FontWeight="Bold"></Label>
             <Label Grid.Row="3" Content="Description" FontWeight="Bold" VerticalAlignment="Center"></Label>
             <Label Grid.Row="4" Content="Phone" FontWeight="Bold"></Label>
             <Label Grid.Row="5" Content="Email" FontWeight="Bold"></Label>
             <Label Grid.Row="6" Content="Age" FontWeight="Bold"></Label>
 
-            <TextBox Grid.Row="2" Grid.Column="1" Name="IdTextBox"></TextBox>
-            <TextBox Grid.Row="3" Grid.Column="1" Name="DescriptionTextBox" AcceptsReturn="True" Height="75"></TextBox>
-            <TextBox Grid.Row="4" Grid.Column="1" Name="PhoneTextBox"></TextBox>
-            <TextBox Grid.Row="5" Grid.Column="1" Name="EmailTextBox"></TextBox>
-            <TextBox Grid.Row="6" Grid.Column="1" Name="AgeTextBox"></TextBox>
+            <TextBox Text="{Binding SelectedPatient.InsuranceNumber}" Grid.Row="2" Grid.Column="1" Name="IdTextBox"></TextBox>
+            <TextBox IsEnabled="False" Text="--not yet supported--" Grid.Row="3" Grid.Column="1" Name="DescriptionTextBox" AcceptsReturn="True" Height="75"></TextBox>
+            <TextBox Text="{Binding SelectedPatient.PhoneNumber}" Grid.Row="4" Grid.Column="1" Name="PhoneTextBox"></TextBox>
+            <TextBox Text="{Binding SelectedPatient.Email}" Grid.Row="5" Grid.Column="1" Name="EmailTextBox"></TextBox>
+            <TextBox IsEnabled="False" Text="{Binding SelectedPatient.Age, Mode=OneWay}" Grid.Row="6" Grid.Column="1" Name="AgeTextBox"></TextBox>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <Button Name="SaveButton" Click="SaveButton_Click" Margin="5" Content="Save "></Button>

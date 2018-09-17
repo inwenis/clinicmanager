@@ -1,8 +1,5 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using ClinicManager.Models;
+﻿using System.Windows;
+using ClinicManager.ViewModels;
 
 namespace ClinicManager.Views
 {
@@ -11,26 +8,10 @@ namespace ClinicManager.Views
     /// </summary>
     public partial class PatientDetailView : Window
     {
-        public Patient Patient { get; set; }
-
-        public PatientDetailView()
+        public PatientDetailView(PatientDetailViewViewModel viewModel)
         {
             InitializeComponent();
-            this.Loaded += DetailView_Loaded;
-        }
-
-        void DetailView_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadData();
-        }
-
-        private void LoadData()
-        {
-            NameLabel.Content = Patient.FirstName + " " + Patient.SecondName;
-            PhoneTextBox.Text = Patient.PhoneNumber;
-            EmailTextBox.Text = Patient.Email;
-            AgeTextBox.Text = (((int) (DateTime.Now - Patient.BirthDate).TotalDays / 365)).ToString();
-            Image.Source = new BitmapImage(new Uri(Patient.Photo, UriKind.Relative));
+            DataContext = viewModel;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

@@ -46,6 +46,12 @@ namespace ClinicManager.ViewModels
             AllPatients = new ObservableCollection<PatientViewModel>();
             LoadData();
             Edit = new CustomCommand(EditExuecute, CanEditExecute);
+            Messenger.Default.Register<PatientDeleteMessage>(this, HandlePatientDeleteMessage);
+        }
+
+        private void HandlePatientDeleteMessage(PatientDeleteMessage message)
+        {
+            AllPatients.Remove(message.ToBeDeleted);
         }
 
         private bool CanEditExecute(object obj)

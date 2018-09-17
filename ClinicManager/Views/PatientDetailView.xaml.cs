@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using ClinicManager.Utilities;
-using ClinicManager.ViewModels;
 
 namespace ClinicManager.Views
 {
@@ -13,11 +12,6 @@ namespace ClinicManager.Views
         {
             InitializeComponent();
             DataContext = ViewModelLocator.PatientDetailViewViewModel;
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

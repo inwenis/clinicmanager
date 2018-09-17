@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows.Input;
 using ClinicManager.Utilities;
 
 namespace ClinicManager.ViewModels
@@ -21,9 +22,22 @@ namespace ClinicManager.ViewModels
             }
         }
 
+        public ICommand Delete { get; set; }
+
         public PatientDetailViewViewModel()
         {
+            Delete = new CustomCommand(DeleteExecute, CanDeleteExecute);
             Messenger.Default.Register<PatientViewModel>(this, SetSelectedPatient);
+        }
+
+        private bool CanDeleteExecute(object obj)
+        {
+            return SelectedPatient != null;
+        }
+
+        private void DeleteExecute(object obj)
+        {
+            Messenger.Default.Send(new PatientDeleteMessage(SelectedPatient));
         }
 
         private void SetSelectedPatient(PatientViewModel message)

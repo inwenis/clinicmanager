@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using ClinicManager.Models;
 using Newtonsoft.Json;
@@ -10,16 +11,16 @@ namespace ClinicManager.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<Patient> _allPatients;
-        private Patient _selectedPatient;
+        private ObservableCollection<PatientViewModel> _allPatients;
+        private PatientViewModel _selectedPatient;
 
-        public ObservableCollection<Patient> AllPatients
+        public ObservableCollection<PatientViewModel> AllPatients
         {
             get => _allPatients;
             set => _allPatients = value;
         }
 
-        public Patient SelectedPatient
+        public PatientViewModel SelectedPatient
         {
             get => _selectedPatient;
             set
@@ -36,14 +37,15 @@ namespace ClinicManager.ViewModels
 
         public MainWindowViewModel()
         {
-            AllPatients = new ObservableCollection<Patient>();
+            AllPatients = new ObservableCollection<PatientViewModel>();
             LoadData();
         }
 
         private void LoadData()
         {
             var allPatients = LoadFromFile();
-            foreach (var patient in allPatients)
+            var viewModels = allPatients.Select(x => PatientViewModel.FromModel(x));
+            foreach (var patient in viewModels)
             {
                 AllPatients.Add(patient);
             }

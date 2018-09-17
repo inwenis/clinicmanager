@@ -64,7 +64,8 @@ namespace ClinicManager.ViewModels
 
         private void SetSelectedPatient(PatientViewModel message)
         {
-            SelectedPatient = message;
+            var patientViewModeCopy = PatientViewModel.FromModel(message.Model);
+            SelectedPatient = patientViewModeCopy;
         }
     }
 }

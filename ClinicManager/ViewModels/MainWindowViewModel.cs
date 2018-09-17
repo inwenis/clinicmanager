@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using ClinicManager.Models;
@@ -7,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace ClinicManager.ViewModels
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Patient> _allPatients;
         private Patient _selectedPatient;
@@ -21,8 +22,17 @@ namespace ClinicManager.ViewModels
         public Patient SelectedPatient
         {
             get => _selectedPatient;
-            set => _selectedPatient = value;
+            set
+            {
+                _selectedPatient = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(SelectedPatient)));
+                }
+            }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindowViewModel()
         {
@@ -54,6 +64,5 @@ namespace ClinicManager.ViewModels
             }
             return patients.ToArray();
         }
-
     }
 }

@@ -42,7 +42,7 @@
             <TextBox IsEnabled="False" Text="{Binding SelectedPatient.Age, Mode=OneWay}" Grid.Row="6" Grid.Column="1" Name="AgeTextBox"></TextBox>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <Button Name="SaveButton" Click="SaveButton_Click" Margin="5" Content="Save "></Button>
+                <Button Command="{Binding Save}" Name="SaveButton" Margin="5" Content="Save "></Button>
                 <Button Command="{Binding Delete}" Margin="5" Content="Delete "></Button>
             </StackPanel>
 

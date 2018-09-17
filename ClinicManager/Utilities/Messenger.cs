@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 
 //Messenger downloaded from StackOverflow and small modifications made
@@ -55,20 +54,7 @@ namespace ClinicManager.Utilities
         /// <param name="action"></param>
         public void Register<T>(object recipient, Action<T> action)
         {
-            Register(recipient, action, null);
-        }
-
-        /// <summary>
-        /// Registers a recipient for a type of message T and a matching context. The action parameter will be executed
-        /// when a corresponding message is sent.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="recipient"></param>
-        /// <param name="action"></param>
-        /// <param name="context"></param>
-        public void Register<T>(object recipient, Action<T> action, object context)
-        {
-            var key = new MessengerKey(recipient, context);
+            var key = new MessengerKey(recipient, typeof(T));
             Dictionary.TryAdd(key, action);
         }
 
@@ -103,30 +89,9 @@ namespace ClinicManager.Utilities
         /// <param name="message"></param>
         public void Send<T>(T message)
         {
-            Send(message, null);
-        }
-
-        /// <summary>
-        /// Sends a message to registered recipients. The message will reach all recipients that are
-        /// registered for this message type and matching context.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="message"></param>
-        /// <param name="context"></param>
-        public void Send<T>(T message, object context)
-        {
-            IEnumerable<KeyValuePair<MessengerKey, object>> result;
-
-            if (context == null)
-            {
-                // Get all recipients where the context is null.
-                result = from r in Dictionary where r.Key.Context == null select r;
-            }
-            else
-            {
-                // Get all recipients where the context is matching.
-                result = from r in Dictionary where r.Key.Context != null && r.Key.Context.Equals(context) select r;
-            }
+            // Get all recipients where the context is matching.
+            var result = Dictionary
+                .Where(r => r.Key.Context.Equals(typeof(T)));
 
             foreach (var action in result.Select(x => x.Value).OfType<Action<T>>())
             {

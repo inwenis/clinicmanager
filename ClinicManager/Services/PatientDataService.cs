@@ -34,9 +34,23 @@ namespace ClinicManager.Services
             }
         }
 
-        public bool UpdatePatient(Patient patient)
+        public bool UpdatePatient(Patient updatedModel)
         {
-            return false;
+            var allPatients = GetAllPatients();
+            var oldModel = allPatients
+                .SingleOrDefault(x => x.InsuranceNumber == updatedModel.InsuranceNumber);
+            if (oldModel != null)
+            {
+                var index = allPatients.IndexOf(oldModel);
+                allPatients.Insert(index, updatedModel);
+                allPatients.Remove(oldModel);
+                SaveAll(allPatients);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private List<Patient> LoadFromFile()

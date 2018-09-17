@@ -149,5 +149,20 @@ namespace ClinicManager.ViewModels
             };
             return viewModel;
         }
+
+        public Patient ToModel()
+        {
+            var model = new Patient
+            {
+                BirthDate = BirthDate,
+                Email = Email,
+                FirstName = FirstName,
+                InsuranceNumber = InsuranceNumber,
+                PhoneNumber = PhoneNumber,
+                Photo = Photo,
+                SecondName = SecondName,
+            };
+            return model;
+        }
     }
 }

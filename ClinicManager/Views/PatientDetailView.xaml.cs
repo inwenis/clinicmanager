@@ -13,10 +13,5 @@ namespace ClinicManager.Views
             InitializeComponent();
             DataContext = ViewModelLocator.PatientDetailViewViewModel;
         }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

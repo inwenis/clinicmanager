@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
+using ClinicManager.Messages;
 using ClinicManager.Services;
 using ClinicManager.Utilities;
 
@@ -46,6 +47,14 @@ namespace ClinicManager.ViewModels
             LoadData();
             Edit = new CustomCommand(EditExuecute, CanEditExecute);
             Messenger.Default.Register<PatientDeleteMessage>(this, HandlePatientDeleteMessage);
+            Messenger.Default.Register<PatientUpdatedMessage>(this, HandlePatientUpdatedMessage);
+        }
+
+        private void HandlePatientUpdatedMessage(PatientUpdatedMessage obj)
+        {
+            AllPatients.Clear();
+            LoadData();
+            _dialogservice.CloseDetailsDialog();
         }
 
         private void HandlePatientDeleteMessage(PatientDeleteMessage message)

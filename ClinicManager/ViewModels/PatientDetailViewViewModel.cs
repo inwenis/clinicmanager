@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
+using ClinicManager.Messages;
+using ClinicManager.Services;
 using ClinicManager.Utilities;
 
 namespace ClinicManager.ViewModels
@@ -7,6 +9,8 @@ namespace ClinicManager.ViewModels
     public class PatientDetailViewViewModel : INotifyPropertyChanged
     {
         private PatientViewModel _selectedPatient;
+        private PatientDataService _patientDataService;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public PatientViewModel SelectedPatient
@@ -23,11 +27,29 @@ namespace ClinicManager.ViewModels
         }
 
         public ICommand Delete { get; set; }
+        public ICommand Save { get; set; }
 
-        public PatientDetailViewViewModel()
+        public PatientDetailViewViewModel(PatientDataService patientDataService)
         {
+            _patientDataService = patientDataService;
             Delete = new CustomCommand(DeleteExecute, CanDeleteExecute);
+            Save = new CustomCommand(SaveExecute, CanSaveExecute);
             Messenger.Default.Register<PatientViewModel>(this, SetSelectedPatient);
+        }
+
+        private bool CanSaveExecute(object obj)
+        {
+            return SelectedPatient != null; // add .AnyUnSavedChanges();
+        }
+
+        private void SaveExecute(object obj)
+        {
+            var model = SelectedPatient.ToModel();
+            var updateWasSuccessful = _patientDataService.UpdatePatient(model);
+            if (updateWasSuccessful)
+            {
+                Messenger.Default.Send(new PatientUpdatedMessage());
+            }
         }
 
         private bool CanDeleteExecute(object obj)

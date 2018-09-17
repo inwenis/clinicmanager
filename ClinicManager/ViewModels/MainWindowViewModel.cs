@@ -59,8 +59,8 @@ namespace ClinicManager.ViewModels
 
         private void HandlePatientDeleteMessage(PatientDeleteMessage message)
         {
-            AllPatients.Remove(message.ToBeDeleted);
-            _patientDataService.DeletePatient(message.ToBeDeleted.Model);
+            AllPatients.Clear();
+            LoadData();
             _dialogservice.CloseDetailsDialog();
         }
 

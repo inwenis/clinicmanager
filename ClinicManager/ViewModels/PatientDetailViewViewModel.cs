@@ -59,7 +59,11 @@ namespace ClinicManager.ViewModels
 
         private void DeleteExecute(object obj)
         {
-            Messenger.Default.Send(new PatientDeleteMessage(SelectedPatient));
+            var deletionWasSuccessful = _patientDataService.DeletePatient(SelectedPatient.Model);
+            if (deletionWasSuccessful)
+            {
+                Messenger.Default.Send(new PatientDeleteMessage(SelectedPatient));
+            }
         }
 
         private void SetSelectedPatient(PatientViewModel message)

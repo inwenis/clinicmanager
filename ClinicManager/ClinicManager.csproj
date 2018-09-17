@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Utilities\CustomCommand.cs" />
     <Compile Include="Utilities\ViewModelLocator.cs" />
     <Compile Include="ViewModels\PatientDetailViewViewModel.cs" />
     <Page Include="Views\MainWindow.xaml">

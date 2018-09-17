@@ -4,7 +4,10 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Input;
 using ClinicManager.Models;
+using ClinicManager.Utilities;
+using ClinicManager.Views;
 using Newtonsoft.Json;
 
 namespace ClinicManager.ViewModels
@@ -35,10 +38,25 @@ namespace ClinicManager.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ICommand Edit { get; set; }
+
         public MainWindowViewModel()
         {
             AllPatients = new ObservableCollection<PatientViewModel>();
             LoadData();
+            Edit = new CustomCommand(EditExuecute, CanEditExecute);
+        }
+
+        private bool CanEditExecute(object obj)
+        {
+            return SelectedPatient != null;
+        }
+
+        private void EditExuecute(object obj)
+        {
+            ViewModelLocator.PatientDetailViewViewModel.SelectedPatient = SelectedPatient;
+            PatientDetailView detailView = new PatientDetailView();
+            detailView.ShowDialog();
         }
 
         private void LoadData()

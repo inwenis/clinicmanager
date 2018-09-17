@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using ClinicManager.Models;
 using Newtonsoft.Json;
@@ -8,7 +9,9 @@ namespace ClinicManager.Services
 {
     public class PatientDataService
     {
-        public Patient[] GetAllPatients()
+        private string _dataFile = "SampleData/samplePatients.json";
+
+        public List<Patient> GetAllPatients()
         {
             var allPatientsFromFile = LoadFromFile();
             return allPatientsFromFile;
@@ -16,7 +19,19 @@ namespace ClinicManager.Services
 
         public bool DeletePatient(Patient patient)
         {
-            return false;
+            var allPatientsFromFile = LoadFromFile();
+            var patientToBeDeleted = allPatientsFromFile
+                .SingleOrDefault(x => x.InsuranceNumber == patient.InsuranceNumber);
+            if (patientToBeDeleted == null) // did not find patient to be deleted
+            {
+                return false;
+            }
+            else
+            {
+                allPatientsFromFile.Remove(patientToBeDeleted);
+                SaveAll(allPatientsFromFile);
+                return true;
+            }
         }
 
         public bool UpdatePatient(Patient patient)
@@ -24,9 +39,9 @@ namespace ClinicManager.Services
             return false;
         }
 
-        private Patient[] LoadFromFile()
+        private List<Patient> LoadFromFile()
         {
-            var allText = File.ReadAllText("SampleData/samplePatients.json");
+            var allText = File.ReadAllText(_dataFile);
             var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
             {
                 DateFormatString = "dd/MM/yyyy"
@@ -37,7 +52,21 @@ namespace ClinicManager.Services
             {
                 patient.Photo = Path.Combine("..", "Photos", patient.Photo);
             }
-            return patients.ToArray();
+            return patients;
+        }
+
+        private void SaveAll(List<Patient> allPatientsFromFile)
+        {
+            var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
+            {
+                DateFormatString = "dd/MM/yyyy",
+                Formatting = Formatting.Indented
+            });
+            File.Delete(_dataFile);
+            using (var streamWriter = new StreamWriter(File.OpenWrite(_dataFile)))
+            {
+                jsonSerializer.Serialize(streamWriter, allPatientsFromFile);
+            }
         }
 
     }

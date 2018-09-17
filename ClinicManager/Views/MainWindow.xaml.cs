@@ -13,9 +13,5 @@ namespace ClinicManager.Views
             InitializeComponent();
             DataContext = ViewModelLocator.MainWindowViewModel;
         }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

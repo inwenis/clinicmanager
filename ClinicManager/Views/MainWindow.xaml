@@ -40,7 +40,6 @@
             <MenuItem Header="Patient">
                 <MenuItem Header="Add"></MenuItem>
                 <MenuItem Command="{Binding Edit}" Header="Edit"></MenuItem>
-                <MenuItem Header="Save All" Click="MenuItem_Click_1"></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>

@@ -9,8 +9,9 @@ namespace ClinicManager.ViewModels
 {
     public class NewPatientViewModel : INotifyPropertyChanged
     {
-        private DialogService _dialogService;
-        private PatientDataService _patientDataService;
+        private IDialogService _dialogService;
+        private IPatientDataService _patientDataService;
+
         public PatientViewModel NewPatient { get; set; }
 
         public ICommand Save { get; set; }
@@ -18,7 +19,7 @@ namespace ClinicManager.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public NewPatientViewModel(DialogService dialogService, PatientDataService patientDataService)
+        public NewPatientViewModel(IDialogService dialogService, IPatientDataService patientDataService)
         {
             _dialogService = dialogService;
             _patientDataService = patientDataService;

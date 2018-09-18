@@ -2,7 +2,15 @@
 
 namespace ClinicManager.Services
 {
-    public class DialogService
+    public interface IDialogService
+    {
+        void ShowDetailsDialog();
+        void CloseDetailsDialog();
+        void ShowNewPatientDialog();
+        void CloseNewPatientDialog();
+    }
+
+    public class DialogService : IDialogService
     {
         private PatientDetailView _patientDetailView;
         private NewPatientView _newPatientView;

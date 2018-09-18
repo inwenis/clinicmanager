@@ -9,7 +9,7 @@ namespace ClinicManager.ViewModels
     public class PatientDetailViewViewModel : INotifyPropertyChanged
     {
         private PatientViewModel _selectedPatient;
-        private PatientDataService _patientDataService;
+        private IPatientDataService _patientDataService;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -29,7 +29,7 @@ namespace ClinicManager.ViewModels
         public ICommand Delete { get; set; }
         public ICommand Save { get; set; }
 
-        public PatientDetailViewViewModel(PatientDataService patientDataService)
+        public PatientDetailViewViewModel(IPatientDataService patientDataService)
         {
             _patientDataService = patientDataService;
             Delete = new CustomCommand(DeleteExecute, CanDeleteExecute);

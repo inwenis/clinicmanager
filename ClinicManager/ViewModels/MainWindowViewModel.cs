@@ -10,8 +10,8 @@ namespace ClinicManager.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private readonly DialogService _dialogservice;
-        private readonly PatientDataService _patientDataService;
+        private readonly IDialogService _dialogservice;
+        private readonly IPatientDataService _patientDataService;
         private ObservableCollection<PatientViewModel> _allPatients;
         private PatientViewModel _selectedPatient;
 
@@ -40,7 +40,7 @@ namespace ClinicManager.ViewModels
         public ICommand Edit { get; set; }
         public ICommand AddPatient { get; set; }
 
-        public MainWindowViewModel(DialogService dialogservice, PatientDataService patientDataService)
+        public MainWindowViewModel(IDialogService dialogservice, IPatientDataService patientDataService)
         {
             _dialogservice = dialogservice;
             _patientDataService = patientDataService;

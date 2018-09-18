@@ -38,7 +38,7 @@
         </TabControl>
         <Menu HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="793">
             <MenuItem Header="Patient">
-                <MenuItem Header="Add"></MenuItem>
+                <MenuItem Command="{Binding AddPatient}" Header="Add"></MenuItem>
                 <MenuItem Command="{Binding Edit}" Header="Edit"></MenuItem>
             </MenuItem>
         </Menu>

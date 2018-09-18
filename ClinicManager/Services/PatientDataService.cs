@@ -53,6 +53,13 @@ namespace ClinicManager.Services
             }
         }
 
+        public void AddNewPatient(Patient model)
+        {
+            var allPatients = GetAllPatients();
+            allPatients.Insert(0, model);
+            SaveAll(allPatients);
+        }
+
         private List<Patient> LoadFromFile()
         {
             var allText = File.ReadAllText(_dataFile);

@@ -7,6 +7,7 @@ namespace ClinicManager.Utilities
     {
         public static MainWindowViewModel MainWindowViewModel;
         public static PatientDetailViewViewModel PatientDetailViewViewModel;
+        public static NewPatientViewModel NewPatientViewModel;
 
         static ViewModelLocator()
         {
@@ -15,6 +16,7 @@ namespace ClinicManager.Utilities
 
             MainWindowViewModel = new MainWindowViewModel(dialogService, patientDataService);
             PatientDetailViewViewModel = new PatientDetailViewViewModel(patientDataService);
+            NewPatientViewModel = new NewPatientViewModel(dialogService, patientDataService);
         }
     }
 }

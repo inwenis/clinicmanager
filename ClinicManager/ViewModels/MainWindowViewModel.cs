@@ -38,6 +38,7 @@ namespace ClinicManager.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand Edit { get; set; }
+        public ICommand AddPatient { get; set; }
 
         public MainWindowViewModel(DialogService dialogservice, PatientDataService patientDataService)
         {
@@ -46,8 +47,21 @@ namespace ClinicManager.ViewModels
             AllPatients = new ObservableCollection<PatientViewModel>();
             LoadData();
             Edit = new CustomCommand(EditExuecute, CanEditExecute);
+            AddPatient = new CustomCommand(AddPatientExecute, _ => true);
             Messenger.Default.Register<PatientDeleteMessage>(this, HandlePatientDeleteMessage);
             Messenger.Default.Register<PatientUpdatedMessage>(this, HandlePatientUpdatedMessage);
+            Messenger.Default.Register<NewPatientAddedMessage>(this, HandleNewPatientAddedMessage);
+        }
+
+        private void HandleNewPatientAddedMessage(NewPatientAddedMessage obj)
+        {
+            AllPatients.Clear();
+            LoadData();
+        }
+
+        private void AddPatientExecute(object obj)
+        {
+            _dialogservice.ShowNewPatientDialog();
         }
 
         private void HandlePatientUpdatedMessage(PatientUpdatedMessage obj)

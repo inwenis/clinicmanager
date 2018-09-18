@@ -20,5 +20,17 @@ namespace ClinicManager.Tests
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void Edit_CanExecute_WhenNoPatientIsSelected_ReturnsFalse()
+        {
+            var mockDialogService = new MockDialogService();
+            var mockPatientDataService = new MockPatientDataService();
+
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            var result = sut.Edit.CanExecute(null);
+
+            Assert.IsFalse(result);
+        }
     }
 }

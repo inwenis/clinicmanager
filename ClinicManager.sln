@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicManager", "ClinicManager\ClinicManager.csproj", "{87908333-CEC0-4846-9E04-9B6C77E9C0D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicManager.Tests", "ClinicManager.Tests\ClinicManager.Tests.csproj", "{B2FCE7FD-A7FC-4E3E-9F5C-27F7E26DAA87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{87908333-CEC0-4846-9E04-9B6C77E9C0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87908333-CEC0-4846-9E04-9B6C77E9C0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87908333-CEC0-4846-9E04-9B6C77E9C0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2FCE7FD-A7FC-4E3E-9F5C-27F7E26DAA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2FCE7FD-A7FC-4E3E-9F5C-27F7E26DAA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2FCE7FD-A7FC-4E3E-9F5C-27F7E26DAA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2FCE7FD-A7FC-4E3E-9F5C-27F7E26DAA87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

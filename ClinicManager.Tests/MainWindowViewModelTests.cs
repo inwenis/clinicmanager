@@ -45,5 +45,19 @@ namespace ClinicManager.Tests
 
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void Edit_Execute_OpensPatientDetailsDialog()
+        {
+            var mockDialogService = new MockDialogService();
+            var mockPatientDataService = new MockPatientDataService();
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            sut.SelectedPatient = sut.AllPatients.First();
+            sut.Edit.Execute(null);
+
+            var firstMethocCall = mockDialogService.InvocationList.First();
+
+            Assert.AreEqual(nameof(mockDialogService.ShowDetailsDialog), firstMethocCall);
+        }
     }
 }

@@ -1,12 +1,15 @@
 ﻿using ClinicManager.Services;
+using System.Collections.Generic;
 
 namespace ClinicManager.Tests.Mocks
 {
     public class MockDialogService : IDialogService
     {
+        public List<string> InvocationList = new List<string>();
+
         public void ShowDetailsDialog()
         {
-            throw new System.NotImplementedException();
+            InvocationList.Add(nameof(ShowDetailsDialog));
         }
 
         public void CloseDetailsDialog()

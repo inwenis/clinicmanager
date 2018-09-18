@@ -1,6 +1,7 @@
 ﻿using System;
 using ClinicManager.Models;
 using System.ComponentModel;
+using AutoMapper;
 
 namespace ClinicManager.ViewModels
 {
@@ -136,32 +137,13 @@ namespace ClinicManager.ViewModels
 
         public static PatientViewModel FromModel(Patient model)
         {
-            var viewModel = new PatientViewModel
-            {
-                BirthDate = model.BirthDate,
-                Email = model.Email,
-                FirstName = model.FirstName,
-                InsuranceNumber = model.InsuranceNumber,
-                Model = model,
-                PhoneNumber = model.PhoneNumber,
-                Photo = model.Photo,
-                SecondName = model.SecondName
-            };
-            return viewModel;
+            var patientViewModel = Mapper.Map<Patient, PatientViewModel>(model);
+            return patientViewModel;
         }
 
         public Patient ToModel()
         {
-            var model = new Patient
-            {
-                BirthDate = BirthDate,
-                Email = Email,
-                FirstName = FirstName,
-                InsuranceNumber = InsuranceNumber,
-                PhoneNumber = PhoneNumber,
-                Photo = Photo,
-                SecondName = SecondName,
-            };
+            var model = Mapper.Map<PatientViewModel, Patient>(this);
             return model;
         }
     }

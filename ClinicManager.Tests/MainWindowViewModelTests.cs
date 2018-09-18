@@ -26,11 +26,24 @@ namespace ClinicManager.Tests
         {
             var mockDialogService = new MockDialogService();
             var mockPatientDataService = new MockPatientDataService();
-
             var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            
             var result = sut.Edit.CanExecute(null);
 
             Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void Edit_CanExecute_WhenPatientIsSelected_ReturnsTrue()
+        {
+            var mockDialogService = new MockDialogService();
+            var mockPatientDataService = new MockPatientDataService();
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            sut.SelectedPatient = sut.AllPatients.First();
+            
+            var result = sut.Edit.CanExecute(null);
+
+            Assert.IsTrue(result);
         }
     }
 }

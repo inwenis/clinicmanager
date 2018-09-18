@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using ClinicManager.Tests.Mocks;
+using ClinicManager.Utilities;
 using ClinicManager.ViewModels;
 using NUnit.Framework;
 
@@ -58,6 +59,20 @@ namespace ClinicManager.Tests
             var firstMethocCall = mockDialogService.InvocationList.First();
 
             Assert.AreEqual(nameof(mockDialogService.ShowDetailsDialog), firstMethocCall);
+        }
+
+        [Test]
+        public void HandlePatientDeletedMessage_ClosesPatientDetailsDialog()
+        {
+            var mockDialogService = new MockDialogService();
+            var mockPatientDataService = new MockPatientDataService();
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            var dummyPatientViewModel = new PatientViewModel();
+            
+            Messenger.Default.Send(new PatientDeleteMessage(dummyPatientViewModel));
+
+            var firstMethocCall = mockDialogService.InvocationList.First();
+            Assert.AreEqual(nameof(mockDialogService.CloseDetailsDialog), firstMethocCall);
         }
     }
 }

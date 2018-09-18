@@ -14,7 +14,7 @@ namespace ClinicManager.Tests.Mocks
 
         public void CloseDetailsDialog()
         {
-            throw new System.NotImplementedException();
+            InvocationList.Add(nameof(CloseDetailsDialog));
         }
 
         public void ShowNewPatientDialog()

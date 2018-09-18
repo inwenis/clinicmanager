@@ -1,6 +1,6 @@
 ﻿namespace ClinicManager.ViewModels
 {
-    internal class PatientDeleteMessage
+    public class PatientDeleteMessage
     {
         public PatientViewModel ToBeDeleted { get; }
 

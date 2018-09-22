@@ -74,7 +74,6 @@
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\IPatientDataService.cs" />
     <Compile Include="Services\PatientDataFromDataBaseService.cs" />
-    <Compile Include="Services\PatientDataFromFileService.cs" />
     <Compile Include="Utilities\CustomCommand.cs" />
     <Compile Include="Utilities\Messenger.cs" />
     <Compile Include="Messages\NewPatientAddedMessage.cs" />

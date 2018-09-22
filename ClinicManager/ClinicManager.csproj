@@ -37,10 +37,17 @@
     <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -65,7 +72,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Services\DialogService.cs" />
-    <Compile Include="Services\PatientDataService.cs" />
+    <Compile Include="Services\IPatientDataService.cs" />
+    <Compile Include="Services\PatientDataFromDataBaseService.cs" />
+    <Compile Include="Services\PatientDataFromFileService.cs" />
     <Compile Include="Utilities\CustomCommand.cs" />
     <Compile Include="Utilities\Messenger.cs" />
     <Compile Include="Messages\NewPatientAddedMessage.cs" />
@@ -102,7 +111,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Patient.cs" />
     <Compile Include="Views\NewPatientView.xaml.cs">
       <DependentUpon>NewPatientView.xaml</DependentUpon>
     </Compile>
@@ -153,6 +161,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ClinicManager.DataModel\ClinicManager.DataModel.csproj">
+      <Project>{072D183F-81EB-461E-8DCF-589B2710FA14}</Project>
+      <Name>ClinicManager.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClinicManager.Models\ClinicManager.Models.csproj">
+      <Project>{9F688659-B9A3-44B2-8123-DB862CDAA1C1}</Project>
+      <Name>ClinicManager.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

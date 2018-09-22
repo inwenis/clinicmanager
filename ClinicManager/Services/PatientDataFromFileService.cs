@@ -6,15 +6,7 @@ using Newtonsoft.Json;
 
 namespace ClinicManager.Services
 {
-    public interface IPatientDataService
-    {
-        List<Patient> GetAllPatients();
-        bool DeletePatient(Patient patient);
-        bool UpdatePatient(Patient updatedModel);
-        void AddNewPatient(Patient model);
-    }
-
-    public class PatientDataService : IPatientDataService
+    public class PatientDataFromFileService : IPatientDataService
     {
         private string _dataFile = "SampleData/samplePatients.json";
 

@@ -12,9 +12,12 @@ namespace ClinicManager
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Mapper.Initialize(cfg => cfg
-                .CreateMap<Patient, PatientViewModel>()
-                .ForPath(dest => dest.Model, opt => opt.MapFrom(src => src))
+            Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<Patient, PatientViewModel>()
+                        .ForPath(dest => dest.Model, opt => opt.MapFrom(src => src))
+                        .ReverseMap();
+                }
             );
         }
     }

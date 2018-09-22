@@ -19,6 +19,8 @@ namespace ClinicManager.ViewModels
 
         public Patient Model { get; private set; }
 
+        public int Id { get; set; }
+
         public string Name
         {
             get { return $"{FirstName} {SecondName}"; }

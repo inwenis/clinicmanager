@@ -12,7 +12,7 @@ namespace ClinicManager.Utilities
         static ViewModelLocator()
         {
             var dialogService = new DialogService();
-            var patientDataService = new PatientDataService();
+            var patientDataService = new PatientDataFromDataBaseService();
 
             MainWindowViewModel = new MainWindowViewModel(dialogService, patientDataService);
             PatientDetailViewViewModel = new PatientDetailViewViewModel(patientDataService);

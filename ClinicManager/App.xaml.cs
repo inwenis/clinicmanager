@@ -12,6 +12,11 @@ namespace ClinicManager
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            InitializeMapper();
+        }
+
+        public static void InitializeMapper()
+        {
             Mapper.Initialize(cfg =>
                 {
                     cfg.CreateMap<Patient, PatientViewModel>()

@@ -9,6 +9,12 @@ namespace ClinicManager.Tests
     [TestFixture]
     public class MainWindowViewModelTests
     {
+        [OneTimeSetUp]
+        public void InitializeMapper()
+        {
+            App.InitializeMapper();
+        }
+
         [Test]
         public void Constructor_LoadsAllPatients()
         {

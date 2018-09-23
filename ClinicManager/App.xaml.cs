@@ -22,6 +22,9 @@ namespace ClinicManager
                     cfg.CreateMap<Patient, PatientViewModel>()
                         .ForPath(dest => dest.Model, opt => opt.MapFrom(src => src))
                         .ReverseMap();
+                    cfg.CreateMap<Doctor, DoctorViewModel>()
+                        .ForPath(dest => dest.Model, opt => opt.MapFrom(src => src))
+                        .ReverseMap();
                 }
             );
         }

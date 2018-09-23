@@ -15,24 +15,16 @@ namespace TestConsoleApp
             using (var context = new ClinicContext())
             {
                 context.Database.Log = Console.WriteLine;
-
-                var allPatients = context.Patients.ToList();
-
-                foreach (var patient in allPatients)
-                {
-                    Console.WriteLine(JsonConvert.SerializeObject(patient));
-                }
-
-//                context.Patients.AddRange(LoadFromFile());
-
-//                context.SaveChanges();
+                context.Patients.AddRange(LoadPatientsFromFile());
+                context.Doctors.AddRange(LoadDoctorsFromFile());
+                context.SaveChanges();
             }
 
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
 
-        private static List<Patient> LoadFromFile()
+        private static List<Patient> LoadPatientsFromFile()
         {
             var allText = File.ReadAllText("samplePatients.json");
             var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
@@ -43,5 +35,15 @@ namespace TestConsoleApp
             return patients;
         }
 
+        private static List<Doctor> LoadDoctorsFromFile()
+        {
+            var allText = File.ReadAllText("sampleDoctors.json");
+            var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
+            {
+                DateFormatString = "dd/MM/yyyy"
+            });
+            var doctors = jsonSerializer.Deserialize<List<Doctor>>(new JsonTextReader(new StringReader(allText)));
+            return doctors;
+        }
     }
 }

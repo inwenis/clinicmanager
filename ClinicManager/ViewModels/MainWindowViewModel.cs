@@ -51,6 +51,7 @@ namespace ClinicManager.ViewModels
             _patientDataService = patientDataService;
             _doctorDataService = doctorDataService;
             AllPatients = new ObservableCollection<PatientViewModel>();
+            AllDoctors = new ObservableCollection<DoctorViewModel>();
             LoadPatients();
             LoadDoctors();
             Edit = new CustomCommand(EditExuecute, CanEditExecute);

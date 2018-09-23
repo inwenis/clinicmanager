@@ -12,7 +12,7 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
-            using (var context = new PatientContext())
+            using (var context = new ClinicContext())
             {
                 context.Database.Log = Console.WriteLine;
 

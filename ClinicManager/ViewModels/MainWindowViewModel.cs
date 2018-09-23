@@ -12,6 +12,7 @@ namespace ClinicManager.ViewModels
     {
         private readonly IDialogService _dialogservice;
         private readonly IPatientDataService _patientDataService;
+        private readonly IDoctorDataService _doctorDataService;
         private ObservableCollection<PatientViewModel> _allPatients;
         private PatientViewModel _selectedPatient;
 
@@ -42,12 +43,16 @@ namespace ClinicManager.ViewModels
         public ICommand Edit { get; set; }
         public ICommand AddPatient { get; set; }
 
-        public MainWindowViewModel(IDialogService dialogservice, IPatientDataService patientDataService)
+        public MainWindowViewModel(IDialogService dialogservice,
+            IPatientDataService patientDataService,
+            IDoctorDataService doctorDataService)
         {
             _dialogservice = dialogservice;
             _patientDataService = patientDataService;
+            _doctorDataService = doctorDataService;
             AllPatients = new ObservableCollection<PatientViewModel>();
-            LoadData();
+            LoadPatients();
+            LoadDoctors();
             Edit = new CustomCommand(EditExuecute, CanEditExecute);
             AddPatient = new CustomCommand(AddPatientExecute, _ => true);
             Messenger.Default.Register<PatientDeleteMessage>(this, HandlePatientDeleteMessage);
@@ -58,7 +63,7 @@ namespace ClinicManager.ViewModels
         private void HandleNewPatientAddedMessage(NewPatientAddedMessage obj)
         {
             AllPatients.Clear();
-            LoadData();
+            LoadPatients();
         }
 
         private void AddPatientExecute(object obj)
@@ -69,14 +74,14 @@ namespace ClinicManager.ViewModels
         private void HandlePatientUpdatedMessage(PatientUpdatedMessage obj)
         {
             AllPatients.Clear();
-            LoadData();
+            LoadPatients();
             _dialogservice.CloseDetailsDialog();
         }
 
         private void HandlePatientDeleteMessage(PatientDeleteMessage message)
         {
             AllPatients.Clear();
-            LoadData();
+            LoadPatients();
             _dialogservice.CloseDetailsDialog();
         }
 
@@ -90,7 +95,7 @@ namespace ClinicManager.ViewModels
             _dialogservice.ShowDetailsDialog();
         }
 
-        private void LoadData()
+        private void LoadPatients()
         {
             var allPatients = _patientDataService.GetAllPatients();
             var viewModels = allPatients.Select(x => PatientViewModel.FromModel(x));
@@ -100,5 +105,14 @@ namespace ClinicManager.ViewModels
             }
         }
 
+        private void LoadDoctors()
+        {
+            var allDoctors = _doctorDataService.GetAllDoctors();
+            var viewModels = allDoctors.Select(x => DoctorViewModel.FromModel(x));
+            foreach (var doctor in viewModels)
+            {
+                AllDoctors.Add(doctor);
+            }
+        }
     }
 }

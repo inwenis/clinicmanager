@@ -10,7 +10,7 @@ namespace ClinicManager.Services
     {
         public List<Patient> GetAllPatients()
         {
-            using (var context = new PatientContext())
+            using (var context = new ClinicContext())
             {
                 var allPatients = context.Patients
                     .OrderBy(x => x.SecondName)
@@ -22,7 +22,7 @@ namespace ClinicManager.Services
 
         public bool DeletePatient(Patient patient)
         {
-            using (var context = new PatientContext())
+            using (var context = new ClinicContext())
             {
                 var patientToBeDeleted = context.Patients.Find(patient.Id);
                 if (patientToBeDeleted != null)
@@ -40,7 +40,7 @@ namespace ClinicManager.Services
 
         public bool UpdatePatient(Patient updatedModel)
         {
-            using (var context = new PatientContext())
+            using (var context = new ClinicContext())
             {
                 context.Patients.Attach(updatedModel);
                 context.Entry(updatedModel).State = EntityState.Modified;
@@ -51,7 +51,7 @@ namespace ClinicManager.Services
 
         public void AddNewPatient(Patient model)
         {
-            using (var context = new PatientContext())
+            using (var context = new ClinicContext())
             {
                 context.Patients.Add(model);
                 context.SaveChanges();

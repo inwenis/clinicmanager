@@ -13,8 +13,9 @@ namespace ClinicManager.Utilities
         {
             var dialogService = new DialogService();
             var patientDataService = new PatientDataFromDataBaseService();
+            var doctorDataService = new DoctorDataService();
 
-            MainWindowViewModel = new MainWindowViewModel(dialogService, patientDataService);
+            MainWindowViewModel = new MainWindowViewModel(dialogService, patientDataService, doctorDataService);
             PatientDetailViewViewModel = new PatientDetailViewViewModel(patientDataService);
             NewPatientViewModel = new NewPatientViewModel(dialogService, patientDataService);
         }

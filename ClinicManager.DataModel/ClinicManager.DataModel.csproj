@@ -47,7 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PatientContext.cs" />
+    <Compile Include="ClinicContext.cs" />
+    <Compile Include="Migrations\201809231228062_add_doctors.cs" />
+    <Compile Include="Migrations\201809231228062_add_doctors.Designer.cs">
+      <DependentUpon>201809231228062_add_doctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +64,11 @@
       <Project>{9F688659-B9A3-44B2-8123-DB862CDAA1C1}</Project>
       <Name>ClinicManager.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809231228062_add_doctors.resx">
+      <DependentUpon>201809231228062_add_doctors.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

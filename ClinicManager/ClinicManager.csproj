@@ -77,6 +77,7 @@
     <Compile Include="Utilities\CustomCommand.cs" />
     <Compile Include="Utilities\Messenger.cs" />
     <Compile Include="Messages\NewPatientAddedMessage.cs" />
+    <Compile Include="ViewModels\DoctorViewModel.cs" />
     <Compile Include="ViewModels\NewPatientViewModel.cs" />
     <Compile Include="Utilities\ViewModelLocator.cs" />
     <Compile Include="Messages\PatientDeleteMessage.cs" />

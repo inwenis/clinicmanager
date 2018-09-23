@@ -35,6 +35,8 @@ namespace ClinicManager.ViewModels
             }
         }
 
+        public ObservableCollection<DoctorViewModel> AllDoctors { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand Edit { get; set; }

@@ -11,7 +11,7 @@
         <TabControl HorizontalAlignment="Left" Height="378" Margin="10,33,0,0" VerticalAlignment="Top" Width="773">
             <TabItem Header="Patients">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name="PatientsListBox" ItemsSource="{Binding AllPatients}" SelectedItem="{Binding SelectedPatient}" HorizontalAlignment="Left" Background="DarkOrange" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373">
+                    <ListBox ItemsSource="{Binding AllPatients}" SelectedItem="{Binding SelectedPatient}" HorizontalAlignment="Left" Background="DarkOrange" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <localUC:PatientUserControl></localUC:PatientUserControl>
@@ -32,8 +32,29 @@
                     <Button Command="{Binding Edit}" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Doctors - not yet implemented">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Doctors">
+                <Grid Background="Aquamarine">
+                    <ListBox ItemsSource="{Binding AllDoctors}" SelectedItem="{Binding SelectedDoctor}" HorizontalAlignment="Left" Background="AntiqueWhite" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <localUC:PatientUserControl></localUC:PatientUserControl>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock HorizontalAlignment="Left" Margin="393,11,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="393,39,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="393,67,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="393,95,0,0" TextWrapping="Wrap" Text="Insurance" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="394,123,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top"/>
+                    <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="447,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.Email, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="447,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.PhoneNumber, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="446,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.InsuranceNumber, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="446,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.Age, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <Image Source="{Binding SelectedDoctor.Photo, Mode=OneWay}" HorizontalAlignment="Left" Height="189" Margin="570,150,0,0" VerticalAlignment="Top" Width="187"/>
+                    <Button Command="{Binding EditDoctor}" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75"/>
+                </Grid>
+
             </TabItem>
         </TabControl>
         <Menu HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="793">

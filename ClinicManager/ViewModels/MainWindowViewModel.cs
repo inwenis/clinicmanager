@@ -15,6 +15,7 @@ namespace ClinicManager.ViewModels
         private readonly IDoctorDataService _doctorDataService;
         private ObservableCollection<PatientViewModel> _allPatients;
         private PatientViewModel _selectedPatient;
+        private DoctorViewModel _selectedDoctor;
 
         public ObservableCollection<PatientViewModel> AllPatients
         {
@@ -37,6 +38,20 @@ namespace ClinicManager.ViewModels
         }
 
         public ObservableCollection<DoctorViewModel> AllDoctors { get; set; }
+
+        public DoctorViewModel SelectedDoctor
+        {
+            get => _selectedDoctor;
+            set
+            {
+                _selectedDoctor = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(SelectedDoctor)));
+                }
+                Messenger.Default.Send(SelectedDoctor);
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

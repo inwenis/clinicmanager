@@ -37,7 +37,7 @@
                     <ListBox ItemsSource="{Binding AllDoctors}" SelectedItem="{Binding SelectedDoctor}" HorizontalAlignment="Left" Background="AntiqueWhite" Height="329" Margin="10,10,0,0" VerticalAlignment="Top" Width="373">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <localUC:PatientUserControl></localUC:PatientUserControl>
+                                <localUC:DoctorUserControl></localUC:DoctorUserControl>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

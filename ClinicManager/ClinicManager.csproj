@@ -75,6 +75,9 @@
     <Compile Include="Services\DoctorDataService.cs" />
     <Compile Include="Services\IPatientDataService.cs" />
     <Compile Include="Services\PatientDataFromDataBaseService.cs" />
+    <Compile Include="UserControls\DoctorUserControl.xaml.cs">
+      <DependentUpon>DoctorUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\CustomCommand.cs" />
     <Compile Include="Utilities\Messenger.cs" />
     <Compile Include="Messages\NewPatientAddedMessage.cs" />
@@ -84,6 +87,10 @@
     <Compile Include="Utilities\ViewModelLocator.cs" />
     <Compile Include="Messages\PatientDeleteMessage.cs" />
     <Compile Include="ViewModels\PatientDetailViewViewModel.cs" />
+    <Page Include="UserControls\DoctorUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

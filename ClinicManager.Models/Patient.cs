@@ -12,5 +12,6 @@ namespace ClinicManager.Models
         public string InsuranceNumber { get; set; }
         public string PhoneNumber { get; set; }
         public string Photo { get; set; }
+        public Doctor AssignedDoctor { get; set; }
     }
 }

@@ -52,6 +52,10 @@
     <Compile Include="Migrations\201809231228062_add_doctors.Designer.cs">
       <DependentUpon>201809231228062_add_doctors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810020643326_add doctor to patient.cs" />
+    <Compile Include="Migrations\201810020643326_add doctor to patient.Designer.cs">
+      <DependentUpon>201810020643326_add doctor to patient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809231228062_add_doctors.resx">
       <DependentUpon>201809231228062_add_doctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810020643326_add doctor to patient.resx">
+      <DependentUpon>201810020643326_add doctor to patient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

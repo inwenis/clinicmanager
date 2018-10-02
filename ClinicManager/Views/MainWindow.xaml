@@ -49,7 +49,7 @@
                     <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="447,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
                     <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.Email, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="447,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
                     <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.PhoneNumber, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="446,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
-                    <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.InsuranceNumber, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="446,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
+                    <TextBox IsEnabled="false" Text="(not available for doctors)" HorizontalAlignment="Left" Height="23" Margin="446,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
                     <TextBox IsEnabled="false" Text="{Binding SelectedDoctor.Age, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
                     <Image Source="{Binding SelectedDoctor.Photo, Mode=OneWay}" HorizontalAlignment="Left" Height="189" Margin="570,150,0,0" VerticalAlignment="Top" Width="187"/>
                     <Button Command="{Binding EditDoctor}" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75"/>

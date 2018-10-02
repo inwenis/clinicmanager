@@ -29,7 +29,7 @@
                     <TextBox IsEnabled="false" Text="{Binding SelectedPatient.InsuranceNumber, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="446,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
                     <TextBox IsEnabled="false" Text="{Binding SelectedPatient.Age, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
                     <Image Source="{Binding SelectedPatient.Photo, Mode=OneWay}" HorizontalAlignment="Left" Height="189" Margin="570,150,0,0" VerticalAlignment="Top" Width="187"/>
-                    <Button Command="{Binding Edit}" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Command="{Binding EditPatient}" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Doctors">
@@ -60,7 +60,7 @@
         <Menu HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="793">
             <MenuItem Header="Patient">
                 <MenuItem Command="{Binding AddPatient}" Header="Add"></MenuItem>
-                <MenuItem Command="{Binding Edit}" Header="Edit"></MenuItem>
+                <MenuItem Command="{Binding EditPatient}" Header="Edit"></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>

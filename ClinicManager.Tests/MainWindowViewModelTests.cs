@@ -37,7 +37,7 @@ namespace ClinicManager.Tests
             var mockDoctorDataService = new MockDoctorDataService();
             var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
 
-            var result = sut.Edit.CanExecute(null);
+            var result = sut.EditPatient.CanExecute(null);
 
             Assert.IsFalse(result);
         }
@@ -51,7 +51,7 @@ namespace ClinicManager.Tests
             var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
             sut.SelectedPatient = sut.AllPatients.First();
 
-            var result = sut.Edit.CanExecute(null);
+            var result = sut.EditPatient.CanExecute(null);
 
             Assert.IsTrue(result);
         }
@@ -64,7 +64,7 @@ namespace ClinicManager.Tests
             var mockDoctorDataService = new MockDoctorDataService();
             var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
             sut.SelectedPatient = sut.AllPatients.First();
-            sut.Edit.Execute(null);
+            sut.EditPatient.Execute(null);
 
             var firstMethocCall = mockDialogService.InvocationList.First();
 

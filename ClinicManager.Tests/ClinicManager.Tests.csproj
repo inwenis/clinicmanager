@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="MainWindowViewModelTests.cs" />
     <Compile Include="Mocks\MockDialogService.cs" />
+    <Compile Include="Mocks\MockDoctorDataService.cs" />
     <Compile Include="Mocks\MockPatientDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

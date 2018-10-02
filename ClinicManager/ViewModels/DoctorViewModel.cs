@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using AutoMapper;
 using ClinicManager.Models;
 
@@ -12,7 +14,7 @@ namespace ClinicManager.ViewModels
         private string _email;
         private DateTimeOffset _birthDate;
         private string _phoneNumber;
-        private string _photo;
+        private string _photoPath;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -102,15 +104,31 @@ namespace ClinicManager.ViewModels
             }
         }
 
-        public string Photo
+        public string PhotoPath
         {
-            get { return _photo; }
+            get { return _photoPath; }
             set
             {
-                _photo = value;
+                _photoPath = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Photo)));
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(PhotoPath)));
+                }
+            }
+        }
+
+        public ImageSource Photo
+        {
+            get
+            {
+                if (PhotoPath != "not yet set")
+                {
+                    var image = new BitmapImage(new Uri(_photoPath, UriKind.RelativeOrAbsolute));
+                    return image;
+                }
+                else
+                {
+                    return new BitmapImage();
                 }
             }
         }

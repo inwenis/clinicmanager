@@ -20,9 +20,10 @@ namespace ClinicManager.Tests
         {
             var mockDialogService = new MockDialogService();
             var mockPatientDataService = new MockPatientDataService();
+            var mockDoctorDataService = new MockDoctorDataService();
             var expected = mockPatientDataService.GetAllPatients();
 
-            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
             var result = sut.AllPatients.Select(x => x.Model);
 
             CollectionAssert.AreEqual(expected, result);
@@ -33,8 +34,9 @@ namespace ClinicManager.Tests
         {
             var mockDialogService = new MockDialogService();
             var mockPatientDataService = new MockPatientDataService();
-            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
-            
+            var mockDoctorDataService = new MockDoctorDataService();
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
+
             var result = sut.Edit.CanExecute(null);
 
             Assert.IsFalse(result);
@@ -45,9 +47,10 @@ namespace ClinicManager.Tests
         {
             var mockDialogService = new MockDialogService();
             var mockPatientDataService = new MockPatientDataService();
-            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            var mockDoctorDataService = new MockDoctorDataService();
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
             sut.SelectedPatient = sut.AllPatients.First();
-            
+
             var result = sut.Edit.CanExecute(null);
 
             Assert.IsTrue(result);
@@ -58,7 +61,8 @@ namespace ClinicManager.Tests
         {
             var mockDialogService = new MockDialogService();
             var mockPatientDataService = new MockPatientDataService();
-            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            var mockDoctorDataService = new MockDoctorDataService();
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
             sut.SelectedPatient = sut.AllPatients.First();
             sut.Edit.Execute(null);
 
@@ -72,7 +76,8 @@ namespace ClinicManager.Tests
         {
             var mockDialogService = new MockDialogService();
             var mockPatientDataService = new MockPatientDataService();
-            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService);
+            var mockDoctorDataService = new MockDoctorDataService();
+            var sut = new MainWindowViewModel(mockDialogService, mockPatientDataService, mockDoctorDataService);
             var dummyPatientViewModel = new PatientViewModel();
             
             Messenger.Default.Send(new PatientDeleteMessage(dummyPatientViewModel));
